@@ -1,12 +1,18 @@
 from unittest import TestCase
+from timeit import Timer
 
 import sorting
+import data
 
 class SortTesting(TestCase):
 	def setUp(self):
-		self.data = [3, 4, 5, 6, 22, 3, 2, 7, 7, 11, 15, 1, 3, 58]
+		self.data = data.numbers
 		self.result = sorted(self.data)
 
 	def test_sorts_should_sort_numbers(self):
 		for sort in sorting.sorts:
-			self.assertItemsEqual(sort(self.data), self.result)
+			sorted_data = sort(self.data)
+
+		for i in range(len(self.data)):
+				assert self.data[i] == self.result[i], "%s: Got %s; expected %s" % (sort, self.data[i], self.result[i])
+
