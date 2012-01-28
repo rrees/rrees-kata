@@ -14,7 +14,10 @@ def selection_sort(data):
 	sorted_data.insert(0, min)
 	return data
 
-def insertion_sort(data, sorted_data = []):
+def insertion_sort(data, sorted_data = None):
+	if not sorted_data:
+		sorted_data = []
+
 	if len(data) == 0:
 		return sorted_data
 
@@ -25,10 +28,16 @@ def insertion_sort(data, sorted_data = []):
 		sorted_data.append(data[0])
 		return insertion_sort(rest, sorted_data = [first])
 
-	for i in range(len(sorted_data)):
-		if first >= sorted_data[i]:
-			sorted_data.insert(i, first)
-			break
+	if first >= sorted_data[-1]:
+		sorted_data.append(first)
+		return insertion_sort(rest, sorted_data = sorted_data)
+
+	for i in range(len(sorted_data) - 1, -1, -1):
+			if first >= sorted_data[i]:
+				sorted_data.insert(i, first)
+				return insertion_sort(rest, sorted_data = sorted_data)
+
+	sorted_data.insert(0, first)
 
 	return insertion_sort(rest, sorted_data = sorted_data)
 
