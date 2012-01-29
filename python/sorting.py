@@ -42,7 +42,44 @@ def insertion_sort(data, sorted_data = None):
 	return insertion_sort(rest, sorted_data = sorted_data)
 
 def merge_sort(data):
-	return data
+	def merge_arrays(a, b, result = None):
+		print a, b, result
+		if not result:
+			result = []
+
+		if len(a) == 0 and  len(b) == 0:
+			return result
+
+		if len(a) > 0 and len(b) > 0:
+			if a[0] < b[0]:
+				result.append(a[0])
+				return merge_arrays(a[1:], b, result)
+			if a[0] > b[0]:
+				result.append(b[0])
+				return merge_arrays(a, b[1:], result)
+			result.append(a[0])
+			result.append(b[0])
+			return merge_arrays(a[1:], b[1:], result)
+
+		if len(a) > 0:
+			result.extend(a)
+			return result
+
+		result.extend(b)
+		return result
+
+	if len(data) < 2:
+		return data
+
+	if len(data) == 2:
+		if data[1] < data[0]:
+			return [data[1], data[0]]
+		return data
+
+	mid_point = len(data) / 2
+
+	return merge_arrays(merge_sort(data[0:mid_point]), merge_sort(data[mid_point: len(data)]))
+
 
 sorts = [selection_sort, insertion_sort, merge_sort]
 
