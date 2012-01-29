@@ -34,7 +34,7 @@ def insertion_sort(data, sorted_data = None):
 
 	for i in range(len(sorted_data) - 1, -1, -1):
 			if first >= sorted_data[i]:
-				sorted_data.insert(i, first)
+				sorted_data.insert(i + 1, first)
 				return insertion_sort(rest, sorted_data = sorted_data)
 
 	sorted_data.insert(0, first)
