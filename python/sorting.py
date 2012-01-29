@@ -41,5 +41,8 @@ def insertion_sort(data, sorted_data = None):
 
 	return insertion_sort(rest, sorted_data = sorted_data)
 
-sorts = [selection_sort, insertion_sort]
+def merge_sort(data):
+	return data
+
+sorts = [selection_sort, insertion_sort, merge_sort]
 

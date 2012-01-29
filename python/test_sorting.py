@@ -14,13 +14,13 @@ def assert_equal(sort, result, target):
 
 class SortTesting(TestCase):
 	def setUp(self):
-		self.data = data.numbers
-		self.result = sorted(self.data)
+		pass
 
 	def test_sorts_should_sort_numbers(self):
 		for sort in sorting.sorts:
-			sorted_data = sort(self.data)
-			assert_equal(sort, sorted_data, self.result)
+			input = list(data.numbers)
+			sorted_data = sort(input)
+			assert_equal(sort, sorted_data, sorted(input))
 
 	def test_similar_values(self):
 		for sort in sorting.sorts:
