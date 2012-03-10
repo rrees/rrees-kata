@@ -9,7 +9,6 @@ def merge(list_of_arrays, result = None):
 		return result
 
 	min_head = min([arr[0] for arr in list_of_arrays if len(arr)> 0])
-	print min_head
 
 	result.append(min_head)
 
@@ -22,10 +21,10 @@ def merge(list_of_arrays, result = None):
 		if not head_found and arr[0] == min_head:
 			new_arrays.append(arr[1:])
 			head_found = True
-		else:
-			new_arrays.append(arr)
+			continue
+		
+		new_arrays.append(arr)
 
-	print new_arrays
 	return merge(new_arrays, result)
 
 	
