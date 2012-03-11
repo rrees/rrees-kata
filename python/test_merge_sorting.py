@@ -18,8 +18,6 @@ class MultipleMergeSorting(TestCase):
 			return a
 
 		expected_result = sorted(reduce(concat, data, []))
-		print expected_result
 
 		for i, value in enumerate(expected_result):
-			print i, value
 			assert result[i] == value, "Expected %s, got %s: %s" % (value, result[i], result)
